@@ -1212,7 +1212,11 @@ $(`#arcsave`).click(function(){
 	var canvas = document.createElement('canvas')
 	var ctx = canvas.getContext("2d")
 
-	ctx.drawImage(unscaled, 0, 0, unscaled.width * 5, unscaled.height * 6, canvas)
+	var mult_w = 5
+	var mult_h = 6
+	canvas.width = unscaled.width * mult_w;
+  	canvas.height = unscaled.height * mult_h;
+	ctx.drawImage(unscaled, 0, 0, canvas.width, canvas.height, canvas)
 	this.href = canvas.getDataUrl('image/png')
 	this.download = getNameForCurrentImage("png")
 	return true
