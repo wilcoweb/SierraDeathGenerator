@@ -1205,6 +1205,20 @@ function getDataURLImage(){
 
 }
 
+$(`#arcsave`).click(function(){
+	// generate an unscaled version
+	renderText(false)
+	var unscaled = getDataURLImage()
+	var canvas = document.createElement('canvas')
+	var ctx = canvas.getContext("2d")
+
+	ctx.drawImage(unscaled, 0, 0, unscaled.width * 5, unscaled.height * 6, canvas)
+	this.href = canvas.getDataUrl('image/png')
+	this.download = getNameForCurrentImage("png")
+	return true
+
+
+})
 $('#save').click(function(){
 	this.href = getDataURLImage()
 	this.download = getNameForCurrentImage("png")
