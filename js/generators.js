@@ -569,6 +569,17 @@ var generators={
 		'gameinfo':'https://www.mobygames.com/game/crusader-of-centy',
 		'added':'2019-04-02',
 	},
+	'ds3':{
+		'title': 'Darkstalkers 3',
+		'source':'Capcom',
+		'sourceurl':'https://en.wikipedia.org/wiki/Capcom',
+		'defaulttext':"I hope you can find something worth devoting your life too.",
+		'platform':'arcade',
+		'year':1997,
+		'gameinfo':'https://www.mobygames.com/game/darkstalkers-3',
+		'added':'2022-09-08',
+		'series':'darkstalkers'
+	},
 	'darius':{
 		'title': 'Darius',
 		'source':'Taito',
@@ -600,7 +611,17 @@ var generators={
 		'gameinfo':'https://www.mobygames.com/game/deus-ex',
 		'added':'2018-04-17',
 		'series':'deus ex'
-
+	},
+	'dinocrisis':{
+		'title': 'Dino Crisis',
+		'source':'Capcom',
+		'sourceurl':'https://en.wikipedia.org/wiki/Capcom',
+		'defaulttext':"Dr.Kirk was alleged to have\ndied in an accident during\nthe course of an experiment\nthree years ago.",
+		'platform':'ps1',
+		'year':1999,
+		'gameinfo':'https://www.mobygames.com/game/dino-crisis',
+		'added':'2022-08-30',
+		'series':'dinocrisis'
 	},
 	'ddp':{
 		'title': 'DoDonPachi',
@@ -969,6 +990,23 @@ var generators={
 		'added':'2018-04-21',
 
 	},
+	'sksgw':{
+		'title': 'Gundam Wing: Endless Duel',
+		'source':'Natsume',
+		'sourceurl':'https://en.wikipedia.org/wiki/Natsume_(company)',
+		'defaulttext':"Looks like you couldn't take it, huh?",
+		'platform':'snes',
+		'year':1996,
+		'gameinfo':'https://www.mobygames.com/game/snes/shin-kid-senki-gundam-wing-endless-duel',
+		'added':'2022-08-08',
+		'series':'gundam',
+		'contributions':[
+			{
+				'contributor': 'Aeon Genesis',
+				'url':'https://aeongenesis.net/projects/gwed',
+			}
+		]
+	},
 	'hrr':{
 		'title': 'Hamtaro: Rainbow Rescue',
 		'source':'AlphaDream',
@@ -979,6 +1017,17 @@ var generators={
 		'added':'2020-07-14',
 		'series':'hamtaro',
 		'gameinfo':'https://www.mobygames.com/game/hamtaro-rainbow-rescue'
+	},
+	'wwtbam':{
+		'title': 'Who Wants to Be a Millionaire',
+		'source':'Hothouse Creations',
+		'sourceurl':'https://en.wikipedia.org/wiki/Hothouse_Creations',
+		'defaulttext':"Which of the following is the largest?\n\n\nA Peanut\nAn Elephant\nThe Moon\nKettle",
+		'platform':'gba',
+		'year':2003,
+		'added':'2022-07-21',
+		'series':'wwtbam',
+		'gameinfo':'https://www.mobygames.com/game/who-wants-to-be-a-millionaire-2nd-edition'
 	},
 	'ha2':{
 		'title': 'Home Alone 2',
@@ -1373,6 +1422,17 @@ var generators={
 		'added':'2018-10-19',
 		'year':2001
 	},
+	'mt1':{
+		'title': 'MegaTraveller 1',
+		'source':'Paragon Software',
+		'sourceurl':'https://en.wikipedia.org/wiki/Paragon_Software',
+		'defaulttext':"\"Please, you must help me, I'm\nin grave danger!\" She removes\nthree objects from the folds of\nher torn cloak and hands them\nto you. \"I am a Transom agent,\na special investigator for\nSharushid Megacorporation, and\nI have discovered a traitor\nnamed Konrad Kiefer. He plans\nto aid the Zhodani in a\ntreacherous surprise attack\nagainst the Imperium. If he\nsucceeds, it will surely lead\nto another destructive Frontier\nWar.\"",
+		'gameinfo':'https://www.mobygames.com/game/megatraveller-1-the-zhodani-conspiracy',
+		'platform':'msdos',
+		'series':'megatraveller',
+		'added':'2022-05-10',
+		'year':1990
+	},
 	'mmbn4':{
 		'title': 'Mega Man Battle Network 4',
 		'source':'Capcom',
@@ -1417,6 +1477,16 @@ var generators={
 		'added':'2018-04-10',
 		'updated':'2021-11-19',
 		'series':'metroid',
+	},
+	'mmgg':{
+		'title': 'Mick & Mack as the Global Gladiators',
+		'source':'Virgin Games',
+		'sourceurl':'https://en.wikipedia.org/wiki/Virgin_Interactive',
+		'defaulttext':'Chill out you toxic pests.',
+		'platform':'genesis',
+		'year':1993,
+		'added':'2022-07-20',
+		'gameinfo':'https://www.mobygames.com/game/mick-mack-as-the-global-gladiators'
 	},
 	'mmprtm':{
 		'title': 'Mighty Morphin Power Rangers: The Movie',
@@ -2442,6 +2512,7 @@ var generators={
 		'platform': 'win32',
 		'year': 2015,
 		'added': '2018-11-07',
+		'updated': '2022-08-25',
 		'gameinfo':'https://www.mobygames.com/game/undertale'
 	},
 	'unreal':{
