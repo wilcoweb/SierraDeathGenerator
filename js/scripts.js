@@ -1323,11 +1323,11 @@ $('#arcsave').click(function(){
 
 	var mult_w = 5
 	var mult_h = 6
-	arc_canvas.width = contxt.canvas.width.width * mult_w
+	arc_canvas.width = context.canvas.width * mult_w
 	arc_canvas.height = context.canvas.height * mult_h
 	ctx.drawImage(context.canvas, 0, 0, arc_canvas.width, arc_canvas.height)
 	this.href = arc_canvas.toDataURL('image/png')
-	this.download = getNameForCurrentImage("png")
+	this.download = getNameForCurrentImage('png')
 	return true
 })
 $('#save').click(function(){
