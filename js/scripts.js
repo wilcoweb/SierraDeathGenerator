@@ -1318,20 +1318,17 @@ function getDataURLImage(){
 $('#arcsave').click(function(){
 	// generate an unscaled version
 	renderText(false)
-	var unscaled = getDataURLImage()
-	var canvas = document.createElement('canvas')
-	var ctx = canvas.getContext("2d")
+	var arc_canvas = document.createElement('canvas')
+	var ctx = arc_canvas.getContext('2d')
 
 	var mult_w = 5
 	var mult_h = 6
-	canvas.width = unscaled.width * mult_w;
-  	canvas.height = unscaled.height * mult_h;
-	ctx.drawImage(context.canvas, 0, 0, canvas.width, canvas.height)
-	this.href = canvas.toDataURL('image/png')
+	arc_canvas.width = contxt.canvas.width.width * mult_w
+	arc_canvas.height = context.canvas.height * mult_h
+	ctx.drawImage(context.canvas, 0, 0, arc_canvas.width, arc_canvas.height)
+	this.href = arc_canvas.toDataURL('image/png')
 	this.download = getNameForCurrentImage("png")
 	return true
-
-
 })
 $('#save').click(function(){
 	this.href = getDataURLImage()
