@@ -1315,7 +1315,7 @@ function getDataURLImage(){
 
 }
 
-$(`#arcsave`).click(function(){
+$('#arcsave').click(function(){
 	// generate an unscaled version
 	renderText(false)
 	var unscaled = getDataURLImage()
