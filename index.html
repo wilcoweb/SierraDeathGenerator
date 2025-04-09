@@ -29,16 +29,28 @@
 
 </head>
 
-<body class="w-100 sans-serif bg-white black-80 code">
+<body class="w-100 sans-serif themeswitch code">
 
 	<main>
-
-		<div class="mw9 center ph1-ns">
+		<div id="gallery-box">
+			<div class="mw9 center ph1-ns flex items-center">
+				<h1 class="mw9f3 fw6 ttu ph3">The Death Generator</h1>
+				<div class="credits ph3">
+					By <a href="http://floppy.foone.org/w/Main_Page">Foone Turing</a> (<a href="https://digipres.club/@foone">@foone</a>)<br />
+					Project source code on <a href="https://github.com/foone/SierraDeathGenerator">github</a>.<br />
+					Support this project on <a href="https://ko-fi.com/fooneturing">Ko-fi</a> or <a href="https://www.patreon.com/foone">Patreon</a>!
+				</div>
+			</div>
+			<div id="generator-collection" class="flex flex-wrap">
+			</div>
+		</div>
+		<div id="main-generator-box" class="mw9 center ph1-ns">
 			<div class="cf ph1-ns">
 				<div  class="fl w-100 w-100-ns pa1">
 
 						<h1 class="f3 fw6 ttu change-title">The Death Generator</h1>
-
+						<a href="#gallery" id="gallery-link" class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray">Gallery</a>
+						<a href="#random" id="random-generator" class="f6 link dim ph2 pv2 mb2 dib white bg-dark-gray" title="Random generator">&#x1f3b2;</a>
 						<a href="#" id="hidelink" class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray">- Hide generators</a>
 						<a href="#" id="showlink" class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray">+ Show other generators</a>
 						<div class="tracked" id="genlist"> </div>
@@ -46,7 +58,7 @@
 						<div id="main-container">
 							<div class="main-generator">
 								<!-- copyright footnote -->
-								<p><a href="https://github.com/foone/SierraDeathGenerator">Code</a> by <a href="https://twitter.com/Foone">@Foone</a><span id="extra-contrib"></span>, content by <a href="#" class="change-source">somebody</a><span id="content-contrib"></span>. 
+								<p><a href="https://github.com/foone/SierraDeathGenerator">Code</a> by <a href="https://digipres.club/@foone">@Foone</a><span id="extra-contrib"></span>, content by <a href="#" class="change-source">somebody</a><span id="content-contrib"></span>. 
 								<a id="playlink" href=""><span id="how-to-use"><!-- this gets replaced by scripts.js based on the generator, but the default option is "Play this game" --></span> on 
 								<span id="where-to-use"><!-- This gets replaced by scripts.js based on the generator, and the default is "the Internet Archive" --></span>!</a></p>
 
@@ -57,11 +69,10 @@
 								<!-- Customization -->
 								<p>
 									<textarea cols="40" rows="6" id="sourcetext" class="border-box hover-black measure b--black-20 pa2 mb2"></textarea>
-									<a href="#" id="save"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+IBBRQ0G7eG+BwAAACiSURBVDjLzdIxCsMwDAVQgQePOkIuIvDRmqP5Br2CS4eM8ZhBxHUUt8gE09KQtNoefGRbFgAkKQapFbNGqtBreAHbAGBTEEyCMSoM0wvdcGeF26wQksZFw2l0ZwDsB1hGsAfrYP8G7Ysa+ey3DarY7mcfN7ey606vcvoaPymMLRC1gDlIVMIVjM9JKuEKEJGJHG+xRHIL2AIjXo1/nqNxfj0AmAoaBZSWo6oAAAAASUVORK5CYII=" width="96" height="96" alt="Save image"/></a>
-									<a href="#" id="arcsave"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+IBBRQ0G7eG+BwAAACiSURBVDjLzdIxCsMwDAVQgQePOkIuIvDRmqP5Br2CS4eM8ZhBxHUUt8gE09KQtNoefGRbFgAkKQapFbNGqtBreAHbAGBTEEyCMSoM0wvdcGeF26wQksZFw2l0ZwDsB1hGsAfrYP8G7Ysa+ey3DarY7mcfN7ey606vcvoaPymMLRC1gDlIVMIVjM9JKuEKEJGJHG+xRHIL2AIjXo1/nqNxfj0AmAoaBZSWo6oAAAAASUVORK5CYII=" width="96" height="96" alt="Aspect Ratio Correction Save image"/></a>
-									<a href="#" id="makegif"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAj0lEQVQ4y8XTPQrEIBAF4Be2SLPgEXIRwaNlj+ZR9giWKcSJThJ4gltsDMkrlA9Uxj8AoonQbEgMqfBheMU2dfpqt2hrAmFcCK9IGBIBwpgPFDvG9CdKlX1IvZDwNLq30HuIZ26uAq7D/tYdP2U5jWdigvPHp61hrYF9txCQ4X/BtRF5GEOXRgsm5nKauD0ruhv4EIwH690AAAAASUVORK5CYII=" width="96" height="96" alt="Make GIF"/></a>
-									<a href="#" id="upload"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAA30lEQVQ4jcXQvY0EIQwF4HdyMCEdDKXQli9aKtlaKGVKICRAehd4fmBgkj2d7gWITzJYNvBxyAc4Ms8RyDoH2fzQQpiEaQJhBcIMgRkIeYSQGXATuEeECgCuTpCtOA2wU2zwHmietgg7XN0hySCsBjngssENCNUQDoDJQBqYcCCDCRAyGXCigucWOjj2qCdg2JfWIfwefEZqmvbIB+SGwCs93HWvPeRC7vEvUQV8BICvMmKJVnTHd1mi3/w2Yl2XqAr1ZQ5fVO/wZYmqqne8ygq/+c2//bsH8IrNEB3+Kj+S1jxFYXY/ugAAAABJRU5ErkJggg==" width="96" height="96" alt="Upload"/></a>
-									<a href="#" id="jsondump" class="debug-only"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAZElEQVQ4y2MYHuD//wPM//9TiWP/B0IOPg7QiXDnUswZBP7BwaFunA5/wPhP/gH7gwo5TA5DRUWFXEUdVk4dQ4Vc/TxsHPmGCrnKfygcqH7GHyATsHBARgMRJkf+AcI5CA7dAAAr2rw763uNiQAAAABJRU5ErkJggg==" width="96" height="96" alt="JSON"/></a>
+									<a href="#" id="save"><img class="lightimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+IBBRQ0G7eG+BwAAACiSURBVDjLzdIxCsMwDAVQgQePOkIuIvDRmqP5Br2CS4eM8ZhBxHUUt8gE09KQtNoefGRbFgAkKQapFbNGqtBreAHbAGBTEEyCMSoM0wvdcGeF26wQksZFw2l0ZwDsB1hGsAfrYP8G7Ysa+ey3DarY7mcfN7ey606vcvoaPymMLRC1gDlIVMIVjM9JKuEKEJGJHG+xRHIL2AIjXo1/nqNxfj0AmAoaBZSWo6oAAAAASUVORK5CYII=" width="96" height="96" alt="Save image"/><img class="darkimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAMAAADVRocKAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABZ0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMfeD95MAAAC0ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIADgAAAFoAAABphwQAAQAAAGgAAAAAAAAADHcBAOgDAAAMdwEA6AMAAFBhaW50Lk5FVCA1LjEAAwAAkAcABAAAADAyMzABoAMAAQAAAAEAAAAFoAQAAQAAAJIAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAFH8Udx7nIb4AAADNSURBVGje7dVBDoAgDATA9v+f9qQG6EJK2gC6eyFG7ZACKlpFpqIwEgNIOiDpgKQD4gKsC+vtsWAD6gK0J4QAPWEGeMs997EQBGAhCoBCGKDpgKYDSoDAn4CaIjAMgaMBXwgQIPBT4AMfO0/9LdcgH8hu0Qd2UfoaHA9wkQlsDEwJ4gHmQ+AAIDoECBAAADqVpwB36RhiBdCWLlvWTqDX0jWA3Z66MBr3AMrHy/+VNeImrQDGLbAXHUx0AdBuu/sKFZ06B6lAZAgQIKB6ARsAGv9m7sm6AAAAAElFTkSuQmCC" width="96" height="96" alt="Save image"/></a>
+									<a href="#" id="arcsave"><img class="lightimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+IBBRQ0G7eG+BwAAACiSURBVDjLzdIxCsMwDAVQgQePOkIuIvDRmqP5Br2CS4eM8ZhBxHUUt8gE09KQtNoefGRbFgAkKQapFbNGqtBreAHbAGBTEEyCMSoM0wvdcGeF26wQksZFw2l0ZwDsB1hGsAfrYP8G7Ysa+ey3DarY7mcfN7ey606vcvoaPymMLRC1gDlIVMIVjM9JKuEKEJGJHG+xRHIL2AIjXo1/nqNxfj0AmAoaBZSWo6oAAAAASUVORK5CYII=" width="96" height="96" alt="Aspect Ratio Correction Save Image"/><img class="darkimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAMAAADVRocKAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABZ0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMfeD95MAAAC0ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIADgAAAFoAAABphwQAAQAAAGgAAAAAAAAADHcBAOgDAAAMdwEA6AMAAFBhaW50Lk5FVCA1LjEAAwAAkAcABAAAADAyMzABoAMAAQAAAAEAAAAFoAQAAQAAAJIAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAFH8Udx7nIb4AAADNSURBVGje7dVBDoAgDATA9v+f9qQG6EJK2gC6eyFG7ZACKlpFpqIwEgNIOiDpgKQD4gKsC+vtsWAD6gK0J4QAPWEGeMs997EQBGAhCoBCGKDpgKYDSoDAn4CaIjAMgaMBXwgQIPBT4AMfO0/9LdcgH8hu0Qd2UfoaHA9wkQlsDEwJ4gHmQ+AAIDoECBAAADqVpwB36RhiBdCWLlvWTqDX0jWA3Z66MBr3AMrHy/+VNeImrQDGLbAXHUx0AdBuu/sKFZ06B6lAZAgQIKB6ARsAGv9m7sm6AAAAAElFTkSuQmCC" width="96" height="96" alt="Aspect Ratio Correction Save Image"/></a></a>
+									<a href="#" id="makegif"><img class="lightimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAj0lEQVQ4y8XTPQrEIBAF4Be2SLPgEXIRwaNlj+ZR9giWKcSJThJ4gltsDMkrlA9Uxj8AoonQbEgMqfBheMU2dfpqt2hrAmFcCK9IGBIBwpgPFDvG9CdKlX1IvZDwNLq30HuIZ26uAq7D/tYdP2U5jWdigvPHp61hrYF9txCQ4X/BtRF5GEOXRgsm5nKauD0ruhv4EIwH690AAAAASUVORK5CYII=" width="96" height="96" alt="Make GIF"/><img class="darkimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAMAAADVRocKAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABZ0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMfeD95MAAAC0ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIADgAAAFoAAABphwQAAQAAAGgAAAAAAAAAYAAAAAEAAABgAAAAAQAAAFBhaW50Lk5FVCA1LjEAAwAAkAcABAAAADAyMzABoAMAAQAAAAEAAAAFoAQAAQAAAJIAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAY6QmxFJO/cwAAAC/SURBVGje7djRDoAgCAVQ7v//dE9tZYCZ0NDd++ZCz1bKKkET+RSYkRhA0gFJByQdkCEAI3EFHRha3xdCAE+IARwhCLCFKMAUwgDMAn04HQCBPwBfIbAPYLd+AnsBWhkBAgRWA2CVENgCgBUCWwBwQ2B14EUIELhWTfzPeQl8D4EFgOgQIECgA9xPpz7Sz28N4Jx4X/R5HagJqJ1RAbqve8UB/wHXANqtGX6L0oCRbVoVaD9dvcZRFYgIAQIEgAO9OxxpYJGUOwAAAABJRU5ErkJggg==" width="96" height="96" alt="Make GIF"/></a>
+									<a href="#" id="jsondump" class="debug-only"><img class="lightimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEX///8AAABVwtN+AAAAZElEQVQ4y2MYHuD//wPM//9TiWP/B0IOPg7QiXDnUswZBP7BwaFunA5/wPhP/gH7gwo5TA5DRUWFXEUdVk4dQ4Vc/TxsHPmGCrnKfygcqH7GHyATsHBARgMRJkf+AcI5CA7dAAAr2rw763uNiQAAAABJRU5ErkJggg==" width="96" height="96" alt="JSON"/><img class="darkimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAC0ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIADgAAAFoAAABphwQAAQAAAGgAAAAAAAAAYAAAAAEAAABgAAAAAQAAAFBhaW50Lk5FVCA1LjEAAwAAkAcABAAAADAyMzABoAMAAQAAAAEAAAAFoAQAAQAAAJIAAAAAAAAAAgABAAIABAAAAFI5OAACAAcABAAAADAxMDAAAAAAY6QmxFJO/cwAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjH3g/eTAAAAqklEQVR42u3ZwQ6DIBBAQf7/p/VuRBbNEpB5t2qsTiIVaimSJEmSRnUEyjgWAABgZ0D2ydIxAAAAAAAAAADJE7UZJosAAACrAzwHAAAAAAAAAADyJlveDwAAAEiSJEnSttXWT5F1VW1/dBtA7ctbn6/bnvAAXwCtW6cFekICRC/o7qQ9t9TQ/6eXAfQMsOiA7B3UAD0/m28vOO1BtjwgMrimn0osD5Ak/bQTauvbzSQIY0wAAAAASUVORK5CYII=" width="96" height="96" alt="JSON"/></a>
 									<!--
 									<table class="debug-only" class="display: none;">
 										<tr><td> </td><td><button class="move-button" data-moveoffset="0,-1">↑</button></td></tr>

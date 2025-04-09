@@ -527,11 +527,30 @@ for( let [gname, generator_item] of sorted_generators){
 			new_generator = true
 		}
 	}
-	$('#genlist').append($('<a class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray generator-switcher"></a>').attr("href",'#'+gname).text(generator_item.title).data('generator',gname).click(function (){
-		hideGenerators()
-		selectedGenerator=$(this).data('generator')
-		selectGenerator()
-	}).toggleClass('new-generator',new_generator)).append(' ')
+	var clickfunc=function (){
+			hideGenerators()
+			selectedGenerator=$(this).data('generator')
+			selectGenerator()
+	}
+	$('#genlist').append($('<a class="f6 link dim ph3 pv2 mb2 dib white bg-dark-gray generator-switcher"></a>')
+		.attr("href",'#'+gname)
+		.text(generator_item.title)
+		.data('generator',gname)
+		.click(clickfunc)
+		.toggleClass('new-generator',new_generator)).append(' ')
+	var galdiv = $('<div class="generator-gallery-item tc ph1 pv1 " ><a class="f6 link dim mb2 dib black db"></div>')
+	
+	var wrapdiv = $('<div class="gallery-image-wrapper flex items-center justify-center"><img></div>')
+	wrapdiv.find('img').attr("src","games/"+gname+"/thumbnail.jpeg")
+	galdiv.find('a').attr("href","#"+gname)
+		.append($('<span class="db sans-serif f4" />').toggleClass('new-generator',new_generator)
+		.text(generator_item.title))
+		.data('generator',gname)
+		.prepend(wrapdiv)
+		.click(clickfunc)
+		.toggleClass('new-generator-box',new_generator)
+	$('#generator-collection').append(galdiv)
+
 }
 
 function isAnyDefaultText(text){
@@ -546,7 +565,7 @@ function isAnyDefaultText(text){
 }
 
 function debugModeActive(){
-	return window.location.hostname == 'localhost'	
+	return window.location.hostname.match(/^(localhost|10\.)/)
 }
 function addDebugAlerts(gen, debugdiv){
 	var mustHave = ['title','source','sourceurl','defaulttext','added','year','platform','gameinfo']
@@ -579,6 +598,14 @@ function addDebugAlerts(gen, debugdiv){
 }
 
 function selectGenerator(){
+	if(selectedGenerator=='gallery'){
+		$('#main-generator-box').hide()
+		$('#gallery-box').show()
+	}else{
+		$('#main-generator-box').show()
+		$('#gallery-box').hide()
+	}
+
 
 	var gen=generators[selectedGenerator]
 	window.location.hash=(glitch?'-':'') + selectedGenerator
@@ -593,8 +620,8 @@ function selectGenerator(){
 	$('a.generator-switcher').each(function(){
 		var active = $(this).data('generator')==selectedGenerator
 		$(this)
-			.toggleClass('bg-dark-gray', !active)
-			.toggleClass('bg-gray', active);
+			.toggleClass('unselected-generator', !active)
+			.toggleClass('selected-generator', active);
 
 
 	})
@@ -939,6 +966,10 @@ function renderText(scaled = true, wordwrap_dryrun=false){
 	}
 
 
+	if('hooks' in fontInfo && 'pre-border' in fontInfo['hooks']){
+		// EVAL IS SAFE CODE, YES?
+		eval(fontInfo['hooks']['pre-border'])
+	}
 	drawOverlays('pre-border', hide_backgrounds)
 
 	if('border' in fontInfo) {
@@ -1151,9 +1182,30 @@ function loadJSONForGenerator(){
 
 function addLinksForSpecialCharactersAndInsertables(){
 	var specials = [] 
+	var CJK_blocks=[
+		[0x3040,0x309F], // Hiragana
+		[0x30A0,0x30FF], // Katakana
+		[0x3130,0x318F], // Hangul Compatibility Jamo
+		[0x3200,0x32FF], // Enclosed CJK Letters and Months
+		[0x3300,0x33FF], // CJK Compatibility
+		[0x4E00,0x9FFF], // CJK Unified Ideographs
+		[0x3400,0x4DBF], // CJK Unified Ideographs Extension A
+		[0xE000,0xF8FF], // Private Use Area
+		[0xAC00,0xD7AF], // Hangul Syllables
+		[0xF900,0xFAFF], // CJK Compatibility Ideographs
+		[0xFF00,0xFFEF], // CJK Compatibility Ideographs
+	]
+	function isCJK(k){
+		for (let span of CJK_blocks){
+			if(span[0]<=k && k<=span[1]){
+				return true
+			}
+		}
+		return false
+	}
 	Object.keys(fontInfo).forEach(function (key) {
 		if($.isNumeric(key)){
-			if(key>=128){
+			if(key>=128 && !(isCJK(key))){
 				specials.push(key)
 			}
 		}
@@ -1223,16 +1275,26 @@ function addLinksForSpecialCharactersAndInsertables(){
 		})
 	}
 }
+// Slightly misnamed: This is just the part between the generator name and the extension. 
+const MAX_FILENAME_LENTH = 64; 
 
 function getNameForCurrentImage(ext){
 	var text = document.querySelector("textarea#sourcetext").value
 	text = text.replace(/\n/g," ").replace(/[^-._a-zA-Z0-9 ]/g,"")
+	if(text.length>=MAX_FILENAME_LENTH){
+		text = text.substring(0,MAX_FILENAME_LENTH);
+	}
 	return selectedGenerator + "-" + text + "." + ext
 }
-
-if(selectedGenerator===null){
+function pickRandomGenerator(){
 	var generator_names = Object.keys(generators)
 	selectedGenerator = generator_names[Math.round(generator_names.length * Math.random())]
+}
+if(selectedGenerator===null){
+	selectedGenerator = 'gallery'
+}
+if(selectedGenerator=='random'){
+	pickRandomGenerator();
 }
 selectGenerator()
 $('#sourcetext').keyup(renderText)
@@ -1340,6 +1402,13 @@ $('a#showlink').click(function(){
 
 $('a#hidelink').click(function(){
 	hideGenerators()
+	return false
+})
+
+$('a#random-generator').click(function(){
+	hideGenerators()
+	pickRandomGenerator()
+	selectGenerator()
 	return false
 })
 
